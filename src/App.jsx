@@ -266,9 +266,9 @@ function Hero() {
 
   return (
     <section id="home" style={{
-      minHeight: "100vh", display: "flex", alignItems: "center",
+      minHeight: "100svh", display: "flex", alignItems: "center",
       background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.18) 0%, transparent 70%), #080c16",
-      padding: "100px 24px 60px", position: "relative", overflow: "hidden",
+      padding: "clamp(60px, 8vw, 100px) 20px clamp(40px, 5vw, 60px)", position: "relative", overflow: "hidden",
       width: "100%",
     }}>
       {/* Grid bg */}
@@ -400,7 +400,7 @@ function Hero() {
 function About() {
   const [ref, inView] = useInView();
   return (
-    <section id="about" ref={ref} style={{ padding: "100px 24px", background: "#0b0f1d" }}>
+    <section id="about" ref={ref} style={{ padding: "clamp(50px, 8vw, 100px) 20px", background: "#0b0f1d" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <SectionLabel label="About Me" />
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }} className="about-grid">
@@ -452,7 +452,7 @@ function About() {
 function Experience() {
   const [ref, inView] = useInView();
   return (
-    <section id="experience" ref={ref} style={{ padding: "100px 24px", background: "#080c16" }}>
+    <section id="experience" ref={ref} style={{ padding: "clamp(50px, 8vw, 100px) 20px", background: "#080c16" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <SectionLabel label="Experience" />
         <h2 style={{ fontFamily: "'Poppins',sans-serif", fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 700, color: "#fff", marginBottom: 52, textAlign: "center" }}>
@@ -540,7 +540,7 @@ function Projects() {
   const filtered = filter === "All" ? PROJECTS : PROJECTS.filter(p => p.category.includes(FILTER_MAP[filter]));
 
   return (
-    <section id="projects" ref={ref} style={{ padding: "100px 24px", background: "#0b0f1d" }}>
+    <section id="projects" ref={ref} style={{ padding: "clamp(50px, 8vw, 100px) 20px", background: "#0b0f1d" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <SectionLabel label="Projects" />
         <h2 style={{ fontFamily: "'Poppins',sans-serif", fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 700, color: "#fff", marginBottom: 16, textAlign: "center" }}>
@@ -770,7 +770,7 @@ function ProjectModal({ p, onClose }) {
 function Skills() {
   const [ref, inView] = useInView();
   return (
-    <section id="skills" ref={ref} style={{ padding: "100px 24px", background: "#080c16" }}>
+    <section id="skills" ref={ref} style={{ padding: "clamp(50px, 8vw, 100px) 20px", background: "#080c16" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <SectionLabel label="Skills" />
         <h2 style={{ fontFamily: "'Poppins',sans-serif", fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 700, color: "#fff", marginBottom: 52, textAlign: "center" }}>Tech Stack</h2>
@@ -820,7 +820,7 @@ const CAT_COLORS = {
 function ClientWork() {
   const [ref, inView] = useInView();
   return (
-    <section id="clientwork" ref={ref} style={{ padding: "100px 24px", background: "#080c16" }}>
+    <section id="clientwork" ref={ref} style={{ padding: "clamp(50px, 8vw, 100px) 20px", background: "#080c16" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <SectionLabel label="Professional Client Work" />
         <h2 style={{ fontFamily: "'Poppins',sans-serif", fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 700, color: "#fff", marginBottom: 12, textAlign: "center" }}>
@@ -911,7 +911,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" ref={ref} style={{ padding: "100px 24px", background: "#0b0f1d" }}>
+    <section id="contact" ref={ref} style={{ padding: "clamp(50px, 8vw, 100px) 20px", background: "#0b0f1d" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <SectionLabel label="Contact" />
         <h2 style={{ fontFamily: "'Poppins',sans-serif", fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 700, color: "#fff", marginBottom: 14, textAlign: "center" }}>Let's Build Something Great</h2>
@@ -1134,6 +1134,8 @@ export default function App() {
 
         /* Mobile */
         @media(max-width: 768px) {
+          section { padding-top: 50px !important; padding-bottom: 50px !important; }
+          .hero-section { padding-top: 80px !important; padding-bottom: 40px !important; }
           .desktop-nav { display: none !important; }
           .mobile-burger { display: flex !important; }
           .hero-grid { grid-template-columns: 1fr !important; text-align: center; gap: 36px !important; }
