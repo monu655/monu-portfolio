@@ -26,7 +26,25 @@ const PROJECTS = [
     color: "#6366f1",
   },
   {
-    id: 2, featured: true, category: ["fullstack", "fintech"],
+    id: 12, featured: true, category: ["fullstack", "wordpress"],
+    name: "VELORA — Fashion E-Commerce Website",
+    type: "WordPress / WooCommerce",
+    desc: "A demo fashion store with men, women, kids and accessories collections, built on WordPress and WooCommerce with a custom theme.",
+    tech: ["WordPress", "WooCommerce", "PHP", "CSS", "MySQL"],
+    features: [
+      "Built a custom WooCommerce theme with home, collection, category and product pages",
+      "Added 40+ products across 9 categories, with sale prices, wishlist and product galleries",
+      "Designed a responsive layout for laptop and mobile",
+      "Wrote a PHP script that sets up products, pages and menus automatically",
+      "Deployed the site on live hosting",
+    ],
+    live: "https://velora-shop.rf.gd",
+    github: null,
+    badge: "E-Commerce",
+    color: "#ec4899",
+  },
+  {
+    id: 2, featured: true, category: ["fullstack", "fintech", "wordpress"],
     name: "TradeNova — Fintech Trading Platform",
     type: "WordPress / Fintech",
     desc: "A Groww-style dark fintech platform with hand-coded Canvas charts, live demo trading engine, and custom WordPress theme — built end-to-end.",
@@ -163,8 +181,8 @@ const SKILLS = {
   "SEO": ["On-Page SEO", "Off-Page SEO", "Local SEO", "Google Search Console"],
 };
 
-const FILTERS = ["All", "Full Stack", "Fintech", "Frontend", "AI", "Client"];
-const FILTER_MAP = { "All": null, "Full Stack": "fullstack", "Fintech": "fintech", "Frontend": "frontend", "AI": "ai", "Client": "client" };
+const FILTERS = ["All", "Full Stack", "Fintech", "WordPress", "Frontend", "AI", "Client"];
+const FILTER_MAP = { "All": null, "Full Stack": "fullstack", "Fintech": "fintech", "WordPress": "wordpress", "Frontend": "frontend", "AI": "ai", "Client": "client" };
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 // FIXED: pehle IntersectionObserver kabhi-kabhi mobile par trigger nahi hota
