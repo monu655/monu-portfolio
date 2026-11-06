@@ -65,7 +65,7 @@ const PROJECTS = [
     id: 13, featured: true, category: ["fullstack", "ai"],
     name: "Verdant & Co — AI Customer Support Platform",
     type: "Full-Stack / AI",
-    desc: "Support platform where AI drafts replies from a knowledge base and human agents review, edit and approve every message. Customers only ever see approved replies.",
+    desc: "AI drafts support replies from a knowledge base; human agents review, edit and approve them. Customers only see approved replies.",
     tech: ["React 18", "TypeScript", "Node.js", "Express", "PostgreSQL", "Groq LLM", "TanStack Query", "Tailwind CSS", "JWT", "Vitest"],
     features: [
       "Customer and Agent views, both powered by one shared message-processing service",
@@ -84,9 +84,9 @@ const PROJECTS = [
   },
   {
     id: 14, featured: true, category: ["fullstack", "ai"],
-    name: "FertilityCare AI — Privacy-First Male Reproductive Health Platform",
+    name: "FertilityCare AI — Male Reproductive Health Platform",
     type: "Full-Stack / Health AI",
-    desc: "Health education and care-navigation app that helps adults understand male reproductive health and prepare for a conversation with a doctor. It does not diagnose, predict outcomes or suggest medicines, and every insight links to a named public-health or medical source.",
+    desc: "Health education app that helps adults prepare for a doctor conversation. It never diagnoses or suggests medicines, and every insight links to a named source.",
     tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "PostgreSQL (Neon)", "Drizzle ORM", "Auth.js", "Groq API", "Vitest", "Playwright"],
     features: [
       "6-step guided assessment with server-side validation and separate, append-only consent records",
@@ -637,7 +637,7 @@ function Projects() {
           What I've Built
         </h2>
         <p style={{ color: "#64748b", textAlign: "center", marginBottom: 40, fontSize: 15, fontFamily: "'Inter',sans-serif" }}>
-          11 production projects — MERN e-commerce, fintech platforms, full-stack CRMs, enterprise dashboards & AI products
+          13 production projects — MERN e-commerce, fintech platforms, full-stack CRMs, enterprise dashboards & AI products
         </p>
 
         {/* Filters */}
@@ -672,6 +672,8 @@ function Projects() {
 
 function ProjectCard({ p, delay, inView, onSelect, featured }) {
   const [hov, setHov] = useState(false);
+  const icon = p.category.includes("ai") ? "🤖" : p.category.includes("fintech") ? "📈" : p.category.includes("fullstack") ? "⚡" : p.category.includes("client") ? "🏥" : "💻";
+  const clamp = (n) => ({ display: "-webkit-box", WebkitLineClamp: n, WebkitBoxOrient: "vertical", overflow: "hidden" });
   return (
     <div
       onMouseEnter={() => setHov(true)}
@@ -681,142 +683,97 @@ function ProjectCard({ p, delay, inView, onSelect, featured }) {
         opacity: inView ? 1 : 0,
         transform: inView ? (hov ? "translateY(-4px)" : "none") : "translateY(24px)",
         transition: "opacity 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease",
-        background: "#0f172a",
-        border: `1px solid ${hov ? "rgba(99,102,241,0.5)" : "rgba(255,255,255,0.07)"}`,
-        borderRadius: 14,
-        padding: "24px",
+        background: "linear-gradient(180deg,#111a30 0%,#0d1426 100%)",
+        border: `1px solid ${hov ? p.color + "80" : "rgba(255,255,255,0.08)"}`,
+        borderRadius: 16,
+        padding: 22,
         cursor: "pointer",
         display: "flex",
         flexDirection: "column",
         height: "100%",
-        boxShadow: hov ? "0 12px 40px rgba(99,102,241,0.15)" : "0 2px 8px rgba(0,0,0,0.3)",
+        textAlign: "left",
+        boxSizing: "border-box",
+        boxShadow: hov ? `0 14px 40px ${p.color}26` : "0 2px 10px rgba(0,0,0,0.35)",
       }}>
 
-      {/* Header row */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
-        {/* Icon */}
+      {/* Top row: icon + type, badge */}
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
         <div style={{
-          width: 44, height: 44, borderRadius: 10,
-          background: `linear-gradient(135deg, ${p.color}33, ${p.color}11)`,
+          width: 42, height: 42, flexShrink: 0, borderRadius: 11,
+          background: `linear-gradient(135deg, ${p.color}40, ${p.color}12)`,
           border: `1px solid ${p.color}55`,
-          display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20
-        }}>
-          {p.category.includes("ai") ? "🤖" : p.category.includes("fintech") ? "📈" : p.category.includes("fullstack") ? "⚡" : p.category.includes("client") ? "🏥" : "💻"}
-        </div>
-        {/* Badge */}
+          display: "flex", alignItems: "center", justifyContent: "center", fontSize: 19,
+        }}>{icon}</div>
+        <p style={{
+          flex: 1, minWidth: 0, margin: 0, fontSize: 11, color: "#64748b", fontWeight: 600,
+          letterSpacing: 1, textTransform: "uppercase", fontFamily: "'Inter',sans-serif",
+          whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+        }}>{p.type}</p>
         {p.badge && (
           <span style={{
-            background: `${p.color}18`,
-            color: p.color,
-            fontSize: 11, fontWeight: 700,
-            padding: "4px 12px", borderRadius: 100,
-            fontFamily: "'Inter',sans-serif",
-            border: `1px solid ${p.color}40`,
-            letterSpacing: 0.5,
-          }}>
-            {p.badge}
-          </span>
+            flexShrink: 0, background: `${p.color}1f`, color: p.color,
+            fontSize: 11, fontWeight: 700, padding: "4px 11px", borderRadius: 100,
+            fontFamily: "'Inter',sans-serif", border: `1px solid ${p.color}45`,
+          }}>{p.badge}</span>
         )}
       </div>
 
-      {/* Project type */}
-      <p style={{
-        fontSize: 10, color: "#475569", fontWeight: 600,
-        letterSpacing: 1.5, textTransform: "uppercase",
-        fontFamily: "'Inter',sans-serif", marginBottom: 6,
-      }}>
-        {p.type}
-      </p>
-
-      {/* Project name */}
+      {/* Title */}
       <h3 style={{
-        fontFamily: "'Poppins',sans-serif",
-        fontSize: featured ? 16 : 15,
-        fontWeight: 700, color: "#f8fafc",
-        lineHeight: 1.4, marginBottom: 10,
-      }}>
-        {p.name}
-      </h3>
-
-      {/* Divider */}
-      <div style={{ width: 32, height: 2, background: `linear-gradient(90deg, ${p.color}, transparent)`, borderRadius: 2, marginBottom: 12 }} />
+        margin: "0 0 10px", fontFamily: "'Poppins',sans-serif", fontSize: 17, fontWeight: 700,
+        color: "#f8fafc", lineHeight: 1.35, minHeight: 46, ...clamp(2),
+      }}>{p.name}</h3>
 
       {/* Description */}
       <p style={{
-        color: "#94a3b8", fontSize: 13.5, lineHeight: 1.7,
-        fontFamily: "'Inter',sans-serif", flexGrow: 1, marginBottom: 20,
-      }}>
-        {p.desc}
-      </p>
+        margin: "0 0 16px", color: "#94a3b8", fontSize: 13.5, lineHeight: 1.65,
+        fontFamily: "'Inter',sans-serif", flexGrow: 1, ...clamp(3),
+      }}>{p.desc}</p>
 
-      {/* Tech stack */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 20 }}>
-        {p.tech.slice(0, 4).map(t => (
+      {/* Tech */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 18, minHeight: 28 }}>
+        {p.tech.slice(0, 3).map(t => (
           <span key={t} style={{
-            background: "rgba(99,102,241,0.08)",
-            color: "#a5b4fc",
-            fontSize: 11.5, fontWeight: 500,
-            padding: "3px 10px", borderRadius: 6,
-            fontFamily: "'Inter',sans-serif",
-            border: "1px solid rgba(99,102,241,0.15)",
-          }}>
-            {t}
-          </span>
+            background: "rgba(99,102,241,0.1)", color: "#a5b4fc", fontSize: 11.5, fontWeight: 500,
+            padding: "3px 10px", borderRadius: 6, fontFamily: "'Inter',sans-serif",
+            border: "1px solid rgba(99,102,241,0.18)", whiteSpace: "nowrap",
+          }}>{t}</span>
         ))}
-        {p.tech.length > 4 && (
-          <span style={{ color: "#475569", fontSize: 11.5, padding: "3px 6px", fontFamily: "'Inter',sans-serif" }}>
-            +{p.tech.length - 4} more
+        {p.tech.length > 3 && (
+          <span style={{ color: "#64748b", fontSize: 11.5, padding: "3px 4px", fontFamily: "'Inter',sans-serif" }}>
+            +{p.tech.length - 3}
           </span>
         )}
       </div>
 
-      {/* Action buttons */}
-      <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: "auto" }}>
+      {/* Buttons */}
+      <div style={{ display: "flex", gap: 8, alignItems: "center", paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         {p.live && (
-          <a href={p.live} target="_blank" rel="noreferrer"
-            onClick={e => e.stopPropagation()}
+          <a href={p.live} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}
             style={{
-              display: "inline-flex", alignItems: "center", gap: 4,
-              background: "linear-gradient(135deg,#6366f1,#8b5cf6)",
-              color: "#fff", padding: "8px 18px", borderRadius: 8,
-              fontSize: 12.5, fontWeight: 600, textDecoration: "none",
-              fontFamily: "'Inter',sans-serif",
-            }}>
-            Live ↗
-          </a>
+              display: "inline-flex", alignItems: "center", background: "linear-gradient(135deg,#6366f1,#8b5cf6)",
+              color: "#fff", padding: "8px 16px", borderRadius: 8, fontSize: 12.5, fontWeight: 600,
+              textDecoration: "none", fontFamily: "'Inter',sans-serif",
+            }}>Live ↗</a>
         )}
         {p.github && (
-          <a href={p.github} target="_blank" rel="noreferrer"
-            onClick={e => e.stopPropagation()}
+          <a href={p.github} target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}
             style={{
-              display: "inline-flex", alignItems: "center", gap: 4,
-              background: "rgba(255,255,255,0.05)",
-              color: "#94a3b8", padding: "8px 18px", borderRadius: 8,
-              fontSize: 12.5, fontWeight: 600, textDecoration: "none",
-              border: "1px solid rgba(255,255,255,0.1)",
-              fontFamily: "'Inter',sans-serif",
-            }}>
-            GitHub
-          </a>
+              display: "inline-flex", alignItems: "center", background: "rgba(255,255,255,0.05)",
+              color: "#cbd5e1", padding: "8px 16px", borderRadius: 8, fontSize: 12.5, fontWeight: 600,
+              textDecoration: "none", border: "1px solid rgba(255,255,255,0.12)", fontFamily: "'Inter',sans-serif",
+            }}>GitHub</a>
         )}
         <button
           onClick={e => { e.stopPropagation(); onSelect(p); }}
           style={{
-            background: "transparent", color: "#6366f1",
-            padding: "8px 16px", borderRadius: 8,
-            fontSize: 12.5, fontWeight: 600,
-            border: "1px solid rgba(99,102,241,0.25)",
-            cursor: "pointer", fontFamily: "'Inter',sans-serif",
-            marginLeft: "auto",
-          }}>
-          Details →
-        </button>
+            marginLeft: "auto", background: "transparent", color: "#818cf8", padding: "8px 4px",
+            fontSize: 12.5, fontWeight: 600, border: "none", cursor: "pointer", fontFamily: "'Inter',sans-serif",
+          }}>Details →</button>
       </div>
     </div>
   );
 }
-
-
 
 function ProjectModal({ p, onClose }) {
   useEffect(() => {
