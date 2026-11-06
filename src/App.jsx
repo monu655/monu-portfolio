@@ -62,6 +62,27 @@ const PROJECTS = [
     color: "#10b981",
   },
   {
+    id: 13, featured: true, category: ["fullstack", "ai"],
+    name: "Verdant & Co — AI Customer Support Platform",
+    type: "Full-Stack / AI",
+    desc: "Support platform where AI drafts replies from a knowledge base and human agents review, edit and approve every message. Customers only ever see approved replies.",
+    tech: ["React 18", "TypeScript", "Node.js", "Express", "PostgreSQL", "Groq LLM", "TanStack Query", "Tailwind CSS", "JWT", "Vitest"],
+    features: [
+      "Customer and Agent views, both powered by one shared message-processing service",
+      "AI drafts grounded in an editable knowledge base; drafts are never auto-sent, and agents edit and approve first",
+      "Signed webhook with HMAC-SHA256 verification and idempotent event handling, so retries and duplicates are safe",
+      "Secure agent login: JWT in HTTP-only cookie, bcrypt, rate limiting, Helmet and Zod validation",
+      "Agent dashboard, analytics (volume, draft quality, top topics), conversation inbox and knowledge base manager",
+      "Edit option for agent replies and customer messages, plus a Test the AI tool",
+      "40 automated tests (Vitest, Supertest); responsive mobile UI",
+      "Deployed: Vercel (React) + Render (API) + Supabase (PostgreSQL)",
+    ],
+    live: "https://web-tan-omega-aahuhopryl.vercel.app",
+    github: "https://github.com/monu655/verdant-co",
+    badge: "AI",
+    color: "#10b981",
+  },
+  {
     id: 12, featured: true, category: ["fullstack", "wordpress"],
     name: "VELORA — Fashion E-Commerce Website",
     type: "WordPress / WooCommerce",
@@ -478,7 +499,7 @@ function About() {
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateX(30px)", transition: "all 0.7s ease 0.15s" }}>
             {[
               { label: "Live Client Websites Delivered", value: "13+" },
-              { label: "Production Projects Shipped", value: "11+" },
+              { label: "Production Projects Shipped", value: "12+" },
               { label: "Tech Stack", value: "React · Next.js · TS · Node" },
               { label: "Availability", value: "Immediate Joiner" },
             ].map(({ label, value }) => (
