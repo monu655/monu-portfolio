@@ -83,6 +83,26 @@ const PROJECTS = [
     color: "#10b981",
   },
   {
+    id: 14, featured: true, category: ["fullstack", "ai"],
+    name: "FertilityCare AI — Privacy-First Male Reproductive Health Platform",
+    type: "Full-Stack / Health AI",
+    desc: "Health education and care-navigation app that helps adults understand male reproductive health and prepare for a conversation with a doctor. It does not diagnose, predict outcomes or suggest medicines, and every insight links to a named public-health or medical source.",
+    tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "PostgreSQL (Neon)", "Drizzle ORM", "Auth.js", "Groq API", "Vitest", "Playwright"],
+    features: [
+      "6-step guided assessment with server-side validation and separate, append-only consent records",
+      "Rules engine that creates source-linked insight cards, each with its limitations stated",
+      "Ask a Question feature answers only from a verified source library, refuses diagnosis and dosing questions, and shows emergency guidance for urgent symptoms",
+      "Groq AI as an optional layer: replies must pass checks (valid format, no diagnosis language, no number missing from the sources) or the plain source passages are shown instead",
+      "Privacy Center: consent withdrawal, download of own data, deletion of assessment data and account",
+      "Printable consultation summary and a one-click demo account using synthetic data only",
+      "66 unit tests and 54 end-to-end tests (desktop and mobile) with Vitest and Playwright",
+    ],
+    live: "https://fertilitycare-ai-liard.vercel.app/",
+    github: "https://github.com/monu655/fertilitycare-ai",
+    badge: "Health AI",
+    color: "#0ea5e9",
+  },
+  {
     id: 12, featured: true, category: ["fullstack", "wordpress"],
     name: "VELORA — Fashion E-Commerce Website",
     type: "WordPress / WooCommerce",
@@ -499,7 +519,7 @@ function About() {
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateX(30px)", transition: "all 0.7s ease 0.15s" }}>
             {[
               { label: "Live Client Websites Delivered", value: "13+" },
-              { label: "Production Projects Shipped", value: "12+" },
+              { label: "Production Projects Shipped", value: "13+" },
               { label: "Tech Stack", value: "React · Next.js · TS · Node" },
               { label: "Availability", value: "Immediate Joiner" },
             ].map(({ label, value }) => (
