@@ -494,7 +494,7 @@ function About() {
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <SectionLabel label="About Me" />
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }} className="about-grid">
-          <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateX(-30px)", transition: "all 0.7s ease" }}>
+          <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateX(-30px)", transition: "all 0.7s ease", textAlign: "left" }}>
             <h2 style={{ fontFamily: "'Poppins',sans-serif", fontSize: "clamp(1.6rem,3vw,2.4rem)", fontWeight: 700, color: "#fff", marginBottom: 20, lineHeight: 1.3 }}>
               Building real products,<br /><span style={{ color: "#6366f1" }}>for real clients</span>
             </h2>
@@ -550,7 +550,7 @@ function Experience() {
         </h2>
 
         {/* Job 1 */}
-        <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(30px)", transition: "all 0.6s ease", background: "rgba(99,102,241,0.05)", border: "1px solid rgba(99,102,241,0.18)", borderRadius: 16, padding: "32px 36px", marginBottom: 20, position: "relative" }}>
+        <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(30px)", transition: "all 0.6s ease", background: "rgba(99,102,241,0.05)", border: "1px solid rgba(99,102,241,0.18)", borderRadius: 16, padding: "clamp(22px,4vw,32px) clamp(18px,4vw,36px)", marginBottom: 20, position: "relative", textAlign: "left" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 16 }}>
             <div>
               <div style={{ display: "inline-block", background: "rgba(99,102,241,0.15)", color: "#a5b4fc", fontSize: 12, fontWeight: 600, padding: "3px 12px", borderRadius: 100, marginBottom: 8, fontFamily: "'Inter',sans-serif" }}>Current Role</div>
@@ -585,7 +585,7 @@ function Experience() {
         </div>
 
         {/* Job 2 */}
-        <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(30px)", transition: "all 0.6s ease 0.15s", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "28px 36px" }}>
+        <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(30px)", transition: "all 0.6s ease 0.15s", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "clamp(22px,4vw,28px) clamp(18px,4vw,36px)", textAlign: "left" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12, marginBottom: 14 }}>
             <div>
               <div style={{ display: "inline-block", background: "rgba(139,92,246,0.12)", color: "#c4b5fd", fontSize: 11, fontWeight: 600, padding: "3px 12px", borderRadius: 100, marginBottom: 8, fontFamily: "'Inter',sans-serif" }}>Internship · Completed</div>
